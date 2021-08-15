@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace CryptoTrading.Common.Models.Config {
     public class ConfigSettings {
         public CBProAPICredentials cbProAPICredentials { get; set; }
+        public string SqlConnection { get; set; }
     }
 }

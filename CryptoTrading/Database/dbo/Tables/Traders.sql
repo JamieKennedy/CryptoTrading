@@ -10,6 +10,9 @@
     [TakeProfit]        DECIMAL (10, 2)  NULL,
     [StopLoss]          DECIMAL (10, 2)  NULL,
     [Result]            DECIMAL (10, 2)  NOT NULL,
+    [ChangeTime] TIMESTAMP NOT NULL, 
+    [Created] DATETIME NOT NULL, 
+    [LastModified] DATETIME NOT NULL, 
     CONSTRAINT [PK_Traders] PRIMARY KEY CLUSTERED ([pkId] ASC),
     CONSTRAINT [FK_Traders_Traders] FOREIGN KEY ([pkId]) REFERENCES [dbo].[Traders] ([pkId])
 );

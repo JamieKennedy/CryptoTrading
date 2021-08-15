@@ -11,6 +11,9 @@
     [ClosingFiatAmount] DECIMAL (10, 2)  NULL,
     [CryptoAmount]      DECIMAL (20, 10) NOT NULL,
     [Result]            DECIMAL (10, 2)  NULL,
+    [ChangeTime] TIMESTAMP NOT NULL, 
+    [Created] DATETIME NOT NULL, 
+    [LastModified] DATETIME NOT NULL, 
     CONSTRAINT [PK_Positions] PRIMARY KEY CLUSTERED ([pkId] ASC)
 );
 
