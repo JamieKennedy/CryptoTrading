@@ -13,23 +13,27 @@ namespace CryptoTrading.TradingBot {
             // Configure TLS 1.2
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+            ConfigSettings configSettings = GetConfigSettings("config.json");
+            CBProAPICredentials apiCredentials = configSettings.cbProAPICredentials;
+
+            CBProClient client = new(apiCredentials.ApiKey, apiCredentials.ApiSecret, false);
+
+            while (true) {
+                decimal price = await client.GetPrice("ETH-GBP");
+                Console.WriteLine(price);
+                Thread.Sleep(1000);
+            }
+
+
+
+
+        }
+
+        private static ConfigSettings GetConfigSettings(string filename) {
             ConfigHandler configHandler = new("config.json");
             ConfigSettings configSettings = configHandler.GetConfigSettings();
 
-            Console.WriteLine(configSettings.cbProAPICredentials.ApiKey);
-            Console.WriteLine(configSettings.cbProAPICredentials.ApiSecret);
-
-            //CBProClient client = new(key, secret, false);
-
-            //while (true) {
-            //    decimal price = await client.GetPrice("ETH-GBP");
-            //    Console.WriteLine(price);
-            //    Thread.Sleep(1000);
-            //}
-
-            
-            
-                
+            return configSettings;
         }
     }
 }
